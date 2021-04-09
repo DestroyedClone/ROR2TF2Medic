@@ -2,10 +2,11 @@
 {
     internal static class StaticValues
     {
-        internal const float swordDamageCoefficient = 2.8f;
+        internal const float syringeGunDamageCoefficient = 0.1f;
 
-        internal const float gunDamageCoefficient = 4.2f;
+        internal const float blutDamageCoefficient = 4.2f;
+        internal const float blutHealAmount = 1f;
 
-        internal const float bombDamageCoefficient = 16f;
+        internal const float xbowDamageCoefficient = 9.0f;
     }
 }

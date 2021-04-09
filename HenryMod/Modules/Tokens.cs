@@ -10,55 +10,63 @@ namespace MedicMod.Modules
             #region Henry
             string prefix = MedicPlugin.developerPrefix + "_MEDIC_BODY_";
 
-            string desc = "Henry is a skilled fighter who makes use of a wide arsenal of weaponry to take down his foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Sword is a good all-rounder while Boxing Gloves are better for laying a beatdown on more powerful foes." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Pistol is a powerful anti air, with its low cooldown and high damage." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Roll has a lingering armor buff that helps to use it aggressively." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Bomb can be used to wipe crowds with ease." + Environment.NewLine + Environment.NewLine;
+            string desc = "Medic is a mercenary that uses his trusty medigun to heal his team, or damage enemies..<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > The syringe guns offer more reliable attacking. Consider the Crusader's Crossbow for when your team gets further away." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Don't worry too hard about your medigun choice, just choose the best you think for the situation." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Your medigun can be used on enemies for a weaker, opposite effect." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Activate your ubercharge when its ready to activate a powerful state for you and your heal target." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Kritzkrieg boosts your damage, so as to not become obsolete!" + Environment.NewLine + Environment.NewLine;
 
-            string outro = "..and so he left, searching for a new identity.";
-            string outroFailure = "..and so he vanished, forever a blank slate.";
+            string outro = "..and so he left, with another soul to bargain.";
+            string outroFailure = "..and so he vanished, never to reanimate again.";
 
-            LanguageAPI.Add(prefix + "NAME", "Henry");
+            LanguageAPI.Add(prefix + "NAME", "Medic");
             LanguageAPI.Add(prefix + "DESCRIPTION", desc);
-            LanguageAPI.Add(prefix + "SUBTITLE", "The Chosen One");
+            LanguageAPI.Add(prefix + "SUBTITLE", "Doctor Assisted Homicide");
             LanguageAPI.Add(prefix + "LORE", "sample lore");
             LanguageAPI.Add(prefix + "OUTRO_FLAVOR", outro);
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", outroFailure);
 
             #region Skins
-            LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Alternate");
+            LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Reliable Excavation & Demolitions");
+            LanguageAPI.Add(prefix + "BLU_SKIN_NAME", "Builder's League United");
+            LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Australium");
             #endregion
 
             #region Passive
-            LanguageAPI.Add(prefix + "PASSIVE_NAME", "Henry passive");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Sample text.");
+            LanguageAPI.Add(prefix + "PASSIVE_NAME", "German Medicine");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "All healing is 35% more effective.");
             #endregion
 
             #region Primary
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Sword");
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Swing forward for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_TARGET_NAME", "Target");
+            LanguageAPI.Add(prefix + "PRIMARY_TARGET_DESCRIPTION", $"Select a target to heal with your medigun.  Allies get healed, while enemies get the inverse effect. Uber gain rate is 50% slower when damaging enemies.Your mediguns increase in effectiveness by 10 % per level.");
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Handgun");
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Fire a handgun for <style=cIsDamage>{100f * StaticValues.gunDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SECONDARY_STOCK_NAME", "Syringe Gun");
+            LanguageAPI.Add(prefix + "SECONDARY_STOCK_DESCRIPTION", Helpers.agilePrefix + $"Fire needles rapidly for <style=cIsDamage>{100f * StaticValues.syringeGunDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SECONDARY_BLUT_NAME", "Syringe Gun");
+            LanguageAPI.Add(prefix + "SECONDARY_BLUT_DESCRIPTION", Helpers.agilePrefix + $"Fires healing needles rapidly for for <style=cIsDamage>{100f * StaticValues.blutDamageCoefficient}% damage</style>. Heals for <style=cIsHealing>{StaticValues.blutHealAmount} health</style>.");
+            LanguageAPI.Add(prefix + "SECONDARY_XBOW_NAME", "Crusader's Crossbow");
+            LanguageAPI.Add(prefix + "SECONDARY_XBOW_DESCRIPTION", Helpers.agilePrefix + $"Fire a syringe that <style=cIsHealing>heals allies</style> or <style=cIsDamage>damages enemies</style> based on distance traveled, up to <style=cIsDamage>{100f * StaticValues.blutDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_NAME", "Roll");
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION", "Roll a short distance, gaining <style=cIsUtility>300 armor</style>. <style=cIsUtility>You cannot be hit during the roll.</style>");
+            LanguageAPI.Add(prefix + "UTILITY_CYCLEUBER_NAME", "Switch Medigun");
+            LanguageAPI.Add(prefix + "UTILITY_CYCLEUBER_DESCRIPTION", "Switches your <style=cIsUtility>currently equipped medigun</style>. Takes longer to switch once you've started healing someone.");
+            LanguageAPI.Add(prefix + "UTILITY_STRONGUBER_NAME", "Upgraded Uber");
+            LanguageAPI.Add(prefix + "UTILITY_STRONGUBER_DESCRIPTION", "Increases the <style=cIsUtility>effectiveness</style> of your currently equipped medigun.");
             #endregion
 
             #region Special
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Bomb");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Throw a bomb for <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Ubercharge");
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Activate your ubercharge, granting special effects to you and your target.");
             #endregion
 
             #region Achievements
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Henry: Mastery");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Henry, beat the game or obliterate on Monsoon.");
+            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Medic: Mastery");
+            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Medic, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Henry: Mastery");
             #endregion
             #endregion

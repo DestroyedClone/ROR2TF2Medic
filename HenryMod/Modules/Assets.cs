@@ -7,7 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using RoR2.UI;
 
-namespace Medic.Modules
+namespace MedicMod.Modules
 {
     internal static class Assets
     {
