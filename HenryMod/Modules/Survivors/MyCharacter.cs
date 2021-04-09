@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HenryMod.Modules.Survivors
+namespace MedicMod.Modules.Survivors
 {
     internal class MyCharacter : SurvivorBase
     {
-        internal override string bodyName { get; set; } = "Henry";
+        internal override string bodyName { get; set; } = "Medic";
 
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
@@ -20,40 +20,40 @@ namespace HenryMod.Modules.Survivors
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            armor = 20f,
+            armor = 0f,
             armorGrowth = 0f,
             bodyName = instance.bodyName + "Body",
-            bodyNameToken = MedicPlugin.developerPrefix + "_HENRY_BODY_NAME",
+            bodyNameToken = MedicPlugin.developerPrefix + "_MEDIC_BODY_NAME",
             bodyColor = Color.grey,
-            characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
+            characterPortrait = Modules.Assets.LoadCharacterIcon("Medic"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
-            healthGrowth = 33f,
-            healthRegen = 1.5f,
+            healthGrowth = 15f,
+            healthRegen = 2f,
             jumpCount = 1,
-            maxHealth = 110f,
-            subtitleNameToken = MedicPlugin.developerPrefix + "_HENRY_BODY_SUBTITLE",
+            maxHealth = 150f,
+            subtitleNameToken = MedicPlugin.developerPrefix + "_MEDIC_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
-        internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
+        internal static Material medicMat = Modules.Assets.CreateMaterial("matMedic");
         internal override int mainRendererIndex { get; set; } = 2;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
                 new CustomRendererInfo
                 {
                     childName = "SwordModel",
-                    material = henryMat,
+                    material = medicMat,
                 },
                 new CustomRendererInfo
                 {
                     childName = "GunModel",
-                    material = henryMat,
+                    material = medicMat,
                 },
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = henryMat
+                    material = medicMat
                 }};
 
         internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);

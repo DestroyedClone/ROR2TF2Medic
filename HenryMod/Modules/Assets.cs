@@ -7,7 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using RoR2.UI;
 
-namespace HenryMod.Modules
+namespace Medic.Modules
 {
     internal static class Assets
     {
@@ -52,7 +52,7 @@ namespace HenryMod.Modules
         {
             if (mainAssetBundle == null)
             {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HenryMod." + assetbundleName))
+                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MedicMod." + assetbundleName))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
                 }
@@ -63,7 +63,7 @@ namespace HenryMod.Modules
 
         internal static void LoadSoundbank()
         {
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("HenryMod.HenryBank.bnk"))
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("MedicMod.MedicBank.bnk"))
             {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
@@ -82,9 +82,9 @@ namespace HenryMod.Modules
             // feel free to delete everything in here and load in your own assets instead
             // it should work fine even if left as is- even if the assets aren't in the bundle
 
-            swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
+            swordHitSoundEvent = CreateNetworkSoundEventDef("MedicSwordHit");
 
-            bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
+            bombExplosionEffect = LoadEffect("BombExplosionEffect", "MedicBombExplosion");
 
             if (bombExplosionEffect)
             {
@@ -102,8 +102,8 @@ namespace HenryMod.Modules
                 };
             }
 
-            swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
-            swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+            swordSwingEffect = Assets.LoadEffect("MedicSwordSwingEffect", true);
+            swordHitImpactEffect = Assets.LoadEffect("ImpactMedicSlash");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

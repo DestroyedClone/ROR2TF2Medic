@@ -1,5 +1,5 @@
-﻿using HenryMod.SkillStates;
-using HenryMod.SkillStates.BaseStates;
+﻿using MedicMod.SkillStates;
+using MedicMod.SkillStates.BaseStates;
 using System.Collections.Generic;
 using System;
 using MonoMod.RuntimeDetour;
@@ -7,7 +7,7 @@ using EntityStates;
 using RoR2;
 using System.Reflection;
 
-namespace HenryMod.Modules
+namespace MedicMod.Modules
 {
     public static class States
     {

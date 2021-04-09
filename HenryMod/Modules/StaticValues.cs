@@ -1,4 +1,4 @@
-﻿namespace HenryMod.Modules
+﻿namespace MedicMod.Modules
 {
     internal static class StaticValues
     {
