@@ -9,11 +9,13 @@ namespace MedicMod.Modules
     internal static class Projectiles
     {
         internal static GameObject bombPrefab;
+        internal static GameObject syringePrefab;
 
         internal static void RegisterProjectiles()
         {
             // only separating into separate methods for my sanity
             CreateBomb();
+            CreateSyringe();
 
             AddProjectile(bombPrefab);
         }
@@ -41,6 +43,13 @@ namespace MedicMod.Modules
             ProjectileController bombController = bombPrefab.GetComponent<ProjectileController>();
             bombController.ghostPrefab = CreateGhostPrefab("HenryBombGhost");
             bombController.startSound = "";
+        }
+
+        private static void CreateSyringe()
+        {
+            syringePrefab = CloneProjectilePrefab("SyringeProjectile", "CrossbowProjectile");
+
+            syringePrefab.AddComponent<Modules.ProjectileScaleDamageOverDistance>();
         }
 
         private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)

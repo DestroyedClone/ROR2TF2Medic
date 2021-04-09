@@ -10,7 +10,7 @@ namespace MedicMod.Modules
             #region Henry
             string prefix = MedicPlugin.developerPrefix + "_MEDIC_BODY_";
 
-            string desc = "Medic is a mercenary that uses his trusty medigun to heal his team, or damage enemies..<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
+            string desc = "Medic is a mercenary that uses his trusty medigun to heal his team, or damage enemies.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > The syringe guns offer more reliable attacking. Consider the Crusader's Crossbow for when your team gets further away." + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > Don't worry too hard about your medigun choice, just choose the best you think for the situation." + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > Your medigun can be used on enemies for a weaker, opposite effect." + Environment.NewLine + Environment.NewLine;
