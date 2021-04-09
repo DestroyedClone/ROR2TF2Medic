@@ -19,19 +19,16 @@ namespace HenryMod
         "SoundAPI",
     })]
 
-    public class HenryPlugin : BaseUnityPlugin
+    public class MedicPlugin : BaseUnityPlugin
     {
-        // if you don't change these you're giving permission to deprecate the mod-
-        //  please change the names to your own stuff, thanks
-        //   this shouldn't even have to be said
-        public const string MODUID = "com.DeveloperName.MyCharacterMod";
-        public const string MODNAME = "MyCharacterMod";
+        public const string MODUID = "com.DestroyedClone.ROR2TF2Medic";
+        public const string MODNAME = "TF2 Medic";
         public const string MODVERSION = "1.0.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "ROB";
 
-        public static HenryPlugin instance;
+        public static MedicPlugin instance;
 
         private void Awake()
         {
