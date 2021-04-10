@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RoR2;
 
 namespace MedicMod.Modules
 {
@@ -36,5 +37,52 @@ namespace MedicMod.Modules
         }
 
         public static Func<T[], T[]> AppendDel<T>(List<T> list) => (r) => Append(ref r, list);
+    }
+
+    internal static class WhateverHelper
+    {
+        public static float GetCritValue(CharacterBody characterBody)
+        {
+            var inventory = characterBody.inventory;
+
+            float num9 = inventory.GetItemCount(RoR2Content.Items.CritGlasses);
+            var num10 = inventory.GetItemCount(RoR2Content.Items.AttackSpeedOnCrit);
+            var num31 = inventory.GetItemCount(RoR2Content.Items.BleedOnHitAndExplode);
+            var num11 = inventory.GetItemCount(RoR2Content.Items.CooldownOnCrit);
+            var num12 = inventory.GetItemCount(RoR2Content.Items.HealOnCrit);
+            var num17 = inventory.GetItemCount(RoR2Content.Items.CritHeal);
+            var num27 = inventory.GetItemCount(RoR2Content.Items.ShinyPearl);
+            float num38 = characterBody.level - 1f;
+            float num61 = characterBody.baseCrit + characterBody.levelCrit * num38;
+
+
+            num61 += (float)num9 * 10f;
+            if (num10 > 0)
+            {
+                num61 += 5f;
+            }
+            if (num31 > 0)
+            {
+                num61 += 5f;
+            }
+            if (num11 > 0)
+            {
+                num61 += 5f;
+            }
+            if (num12 > 0)
+            {
+                num61 += 5f;
+            }
+            if (num17 > 0)
+            {
+                num61 += 5f;
+            }
+            if (characterBody.HasBuff(RoR2Content.Buffs.FullCrit))
+            {
+                num61 += 100f;
+            }
+            num61 += (float)num27 * 10f;
+            return num61;
+        }
     }
 }

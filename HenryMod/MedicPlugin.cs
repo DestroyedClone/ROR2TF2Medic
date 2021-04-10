@@ -62,6 +62,46 @@ namespace MedicMod
         {
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+        }
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+
+            if (self)
+            {
+                // Stock Uber //
+                if (self.body.HasBuff(Modules.Buffs.stockUberBuff))
+                {
+                    damageInfo.damage = 0f;
+                }
+                if (self.body.HasBuff(Modules.Buffs.stockDisuberDebuff))
+                {
+                    damageInfo.damage *= 1.5f;
+                }
+
+                // Kritzkrieg
+                if (damageInfo.attacker)
+                {
+                    var attackerCB = damageInfo.attacker.GetComponent<CharacterBody>();
+                    if (attackerCB.HasBuff(Modules.Buffs.kritzkUberBuff))
+                    {
+                        var crit = Modules.WhateverHelper.GetCritValue(self.body);
+                        if (crit > 100f)
+                        {
+                            damageInfo.crit = true;
+                            damageInfo.damage *= (100f - crit)/100f;
+                        }
+                    }
+                    if (attackerCB.HasBuff(Modules.Buffs.kritzDisuberDebuff))
+                    {
+                        damageInfo.damage *= 0.5f;
+                    }
+                }
+            }
+
+
+            orig(self, damageInfo);
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -71,9 +111,9 @@ namespace MedicMod
             // a simple stat hook, adds armor after stats are recalculated
             if (self)
             {
-                if (self.HasBuff(Modules.Buffs.armorBuff))
+                if (self.HasBuff(Modules.Buffs.stockUberBuff))
                 {
-                    self.armor += 300f;
+                    self.healthComponent.godMode = true;
                 }
             }
         }
